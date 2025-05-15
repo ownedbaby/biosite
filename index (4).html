@@ -1,0 +1,312 @@
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="apple-touch-icon" href="icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0a001f">
+<title>anabioz - Биография</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Orbitron', sans-serif;
+    background: #0a001f;
+    overflow-x: hidden;
+    color: #cbbaff;
+  }
+  /* Animated rain background */
+  .rain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background: linear-gradient(135deg, #1a0033 0%, #3a0066 100%);
+    overflow: hidden;
+  }
+  .drop {
+    position: absolute;
+    bottom: 100%;
+    width: 2px;
+    height: 15px;
+    background: linear-gradient(180deg, #8a4fff, #3a0077);
+    opacity: 0.5;
+    border-radius: 50%;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    filter: drop-shadow(0 0 2px #8a4fff);
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(110vh) translateX(8px);
+      opacity: 0;
+    }
+  }
+  /* Container styling */
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    background: rgba(25, 0, 45, 0.01);
+    border-radius: 28px;
+    box-shadow: 0 0 30px #7a3fffaa;
+    backdrop-filter: blur(16px);
+    border: 1px solid #5a2fff88;
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  h1 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: #bbaaff;
+    text-shadow:
+      0 0 6px #7a3fff,
+      0 0 12px #a06fff;
+    margin-bottom: 0.3rem;
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% {
+      text-shadow:
+        0 0 6px #7a3fff,
+        0 0 12px #a06fff;
+      color: #bbaaff;
+    }
+    50% {
+      text-shadow:
+        0 0 12px #a06fff,
+        0 0 24px #d0bfff;
+      color: #d0bfff;
+    }
+  }
+  h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #a89aff;
+    margin-bottom: 2rem;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 6px #7a3fffaa;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+    animation-delay: 0.5s;
+  }
+  p.bio {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #c0b3ffcc;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 6px #5a2fffcc;
+    animation: fadeIn 2.5s ease forwards;
+    opacity: 0;
+    animation-delay: 0.8s;
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  ul.channels {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+    animation: fadeIn 3s ease forwards;
+    opacity: 0;
+    animation-delay: 1.2s;
+  }
+  ul.channels li {
+    flex: 1 1 45%;
+  }
+  ul.channels a {
+    color: #a06fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    padding: 0.75rem 1.4rem;
+    border-radius: 9999px;
+    background: transparent;
+    border: 2px solid #a06fff;
+    box-shadow:
+      0 0 6px #a06fff88;
+    transition: all 0.35s ease;
+    text-align: center;
+    letter-spacing: 0.05em;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  ul.channels a:hover,
+  ul.channels a:focus {
+    background: #7a3fff;
+    box-shadow:
+      0 0 20px #a06fff,
+      0 0 40px #7a3fff;
+    color: #e0d4ff;
+    outline: none;
+    transform: scale(1.05);
+  }
+  /* Removed the ::before pseudo element to eliminate the white stripe */
+  /* Avatar styling */
+  .avatar-wrapper {
+    margin: 0 auto 2.8rem;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #7a3fff, #2a0055);
+    box-shadow:
+      0 0 40px #7a3fffcc,
+      0 0 80px #a06fff88,
+      inset 0 0 25px #5a2fffcc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 5px solid #a06fffcc;
+    position: relative;
+    animation: avatarGlow 4s ease-in-out infinite;
+  }
+  @keyframes avatarGlow {
+    0%, 100% {
+      box-shadow:
+        0 0 40px #7a3fffcc,
+        0 0 80px #a06fff88,
+        inset 0 0 25px #5a2fffcc;
+    }
+    50% {
+      box-shadow:
+        0 0 60px #a0a0ffcc,
+        0 0 100px #d0bfffaa,
+        inset 0 0 40px #7a3fffcc;
+    }
+  }
+  .avatar-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -15%;
+    left: -15%;
+    width: 130%;
+    height: 130%;
+    border-radius: 50%;
+    box-shadow:
+      0 0 50px 20px #a06fff55,
+      0 0 90px 40px #7a3fff33;
+    animation: pulse 3.5s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow:
+      0 0 25px #7a3fffcc;
+    border: 4px solid #7a3fffcc;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 0 6px #a06fffcc);
+    transition: transform 0.3s ease;
+  }
+  .avatar:hover {
+    transform: scale(1.05) rotate(3deg);
+    filter: drop-shadow(0 0 12px #d0bfff);
+  }
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.9;
+    }
+  }
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.8rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    p.bio {
+      font-size: 1rem;
+    }
+    ul.channels li {
+      flex: 1 1 100%;
+    }
+    ul.channels a {
+      font-size: 1rem;
+      padding: 0.6rem 1rem;
+    }
+    .avatar-wrapper {
+      width: 140px;
+      height: 140px;
+    }
+    .avatar {
+      width: 120px;
+      height: 120px;
+    }
+  }
+</style>
+</head>
+<body>
+<div aria-hidden="true" class="rain"></div>
+<main class="container" role="main" aria-label="Биография  anabioz">
+  <div aria-label="Аватар пользователя anabioz" class="avatar-wrapper">
+    <img alt="аватар" class="avatar" src="https://i.pinimg.com/736x/38/30/c8/3830c8ad98bbdbb7b36e72e3625e16a9.jpg" width="160" height="160" />
+  </div>
+  <h3>ANABIOZ</h3>
+  <h2>Social engineer | Coder | Osint engineer</h2>
+  <p class="bio">
+    Я осинтер, доксер, сваттер и кодер. Профессионально занимаюсь поиском скрытой информации, доксингом с упором на точность, использую сваттинг как часть RP-стратегий, разрабатываю скрипты, утилиты и ботов для автоматизации задач и проведения OSINT-операций.
+  </p>
+  <ul class="channels" aria-label="Мои каналы">
+    <li><a href="https://t.me/owner_jenny" target="_blank" rel="noopener noreferrer" tabindex="0">ᴄʜᴀɴɴᴇʟ</a></li>
+    <li><a href="https://t.me/wxnna_portfolio" target="_blank" rel="noopener noreferrer" tabindex="0">ᴍʏ ᴘʀᴏᴊᴇᴄᴛ</a></li>
+    <li><a href="https://t.me/owner_deffa" target="_blank" rel="noopener noreferrer" tabindex="0">ᴅᴇғᴇɴᴅᴇʀ</a></li>
+    <li><a href="https://doxbin.com/user/anabioz" target="_blank" rel="noopener noreferrer" tabindex="0">ᴅᴏxʙɪɴ ᴘʀᴏғɪʟᴇ</a></li>
+    <li><a href="https://ghostbin.space/user/esteria" target="_blank" rel="noopener noreferrer" tabindex="0">ɢʜᴏsᴛʙɪɴ ᴘʀᴏғɪʟᴇ</a></li>
+  </ul>
+</main>
+<script>
+  // Create rain drops dynamically
+  const rainContainer = document.querySelector('.rain');
+  const dropsCount = 140;
+  for(let i=0; i<dropsCount; i++) {
+    const drop = document.createElement('div');
+    drop.classList.add('drop');
+    drop.style.left = Math.random() * 100 + 'vw';
+    drop.style.animationDuration = (0.6 + Math.random() * 0.8) + 's';
+    drop.style.animationDelay = (Math.random() * 6) + 's';
+    drop.style.height = (12 + Math.random() * 18) + 'px';
+    drop.style.opacity = 0.3 + Math.random() * 0.5;
+    rainContainer.appendChild(drop);
+  }
+</script>
+</body>
+</html>
